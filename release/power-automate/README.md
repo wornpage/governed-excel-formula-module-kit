@@ -25,6 +25,10 @@ The [sample records](example.json) show the full fingerprints, both file observa
 
 **Dataverse’s role.** Built-in Approvals requires a Dataverse database in the flow environment. WorkbookReview is a team-owned table for workbook evidence. The operational workbook can stay in SharePoint. Use an environment and connections authorized for Approvals, the custom table and restricted SharePoint reads. The routing identity needs no write access to the released library. [Approval prerequisites](https://learn.microsoft.com/en-us/power-automate/get-started-approvals)
 
+## Licensing and permissions
+
+Approvals is a standard Power Automate connector. The proposed flow writes `WorkbookReview` through the premium Microsoft Dataverse connector. Confirm that the flow’s license covers premium connectors and that its connection identity can create and update rows in this table. [Approvals connector](https://learn.microsoft.com/en-us/connectors/approvals/) · [Microsoft Dataverse connector](https://learn.microsoft.com/en-us/connectors/commondataserviceforapps/)
+
 ## Replay the binding locally
 
 From the extracted kit, run `python -B release/power-automate/verify_binding.py` with Python 3.10 or later. The replay uses the saved Excel evidence and hashes the bundled candidate bytes. It publishes B in a temporary folder on a match and keeps A for a replacement version, wrong bytes, another file with identical bytes, an unrelated response, the wrong reviewer, a timeout or a rejection.
