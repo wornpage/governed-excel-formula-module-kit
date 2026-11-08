@@ -1,0 +1,1 @@
+=LAMBDA(choice,labels,keys,IF(choice="","",LET(firstPos,IFNA(XMATCH(choice,labels,0),0),IF(firstPos=0,"",IF(firstPos<>XMATCH(choice,labels,0,-1),"",LET(found,INDEX(keys,firstPos)&"",IF(found="","",IF(XMATCH(found,keys,0)=XMATCH(found,keys,0,-1),found,""))))))))

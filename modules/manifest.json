@@ -1,0 +1,17 @@
+{
+  "schema": 2,
+  "source": {
+    "file": "example.xlsx",
+    "sha256": "a7a4fef2ea4d235ad9c1240db6ee37db9d36fa6b3dac95ab7870701ee4ed23b7"
+  },
+  "counts": {
+    "defined_names": 1,
+    "direct_lambdas": 1,
+    "declared_aliases": 0,
+    "visible_controls": 0,
+    "without_comment": 0
+  },
+  "modules": {
+    "module-asset.json": "c3e1f63071e5858309f681e0a5438e30655d1e9cdd1b1b30746fd13d07895505"
+  }
+}

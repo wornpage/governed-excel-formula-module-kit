@@ -1,0 +1,128 @@
+{
+  "example": "example.xlsx",
+  "sha256": "a7a4fef2ea4d235ad9c1240db6ee37db9d36fa6b3dac95ab7870701ee4ed23b7",
+  "excelForWindowsBuild": "16.0.20701.20002",
+  "verifiedUtc": "2026-11-08T01:49:42Z",
+  "reopenedCases": [
+    {
+      "row": 6,
+      "case": "Unique label and key",
+      "expected": "K-102",
+      "actual": "K-102",
+      "check": "PASS"
+    },
+    {
+      "row": 7,
+      "case": "Two matching labels",
+      "expected": "",
+      "actual": "",
+      "check": "PASS"
+    },
+    {
+      "row": 8,
+      "case": "Unknown label",
+      "expected": "",
+      "actual": "",
+      "check": "PASS"
+    },
+    {
+      "row": 9,
+      "case": "Empty selection",
+      "expected": "",
+      "actual": "",
+      "check": "PASS"
+    },
+    {
+      "row": 10,
+      "case": "Record missing its key",
+      "expected": "",
+      "actual": "",
+      "check": "PASS"
+    },
+    {
+      "row": 11,
+      "case": "Key reused on another row",
+      "expected": "",
+      "actual": "",
+      "check": "PASS"
+    },
+    {
+      "row": 12,
+      "case": "Literal asterisk",
+      "expected": "K-107",
+      "actual": "K-107",
+      "check": "PASS"
+    },
+    {
+      "row": 13,
+      "case": "Different capitalization",
+      "expected": "K-102",
+      "actual": "K-102",
+      "check": "PASS"
+    }
+  ],
+  "dataChangeInSeparateCopy": {
+    "cell": "Register!B8",
+    "old": "Pump North",
+    "new": "Pump South",
+    "failedCases": [
+      {
+        "row": 7,
+        "case": "Two matching labels",
+        "expected": "",
+        "actual": "K-100",
+        "check": "FAIL"
+      }
+    ]
+  },
+  "formulaChangeInSeparateCopy": {
+    "name": "Asset.ResolveKey",
+    "substitutedFormula": "=LAMBDA(choice,labels,keys,IF(choice=\"\",\"\",XLOOKUP(choice,labels,keys&\"\",\"\",0)))",
+    "failedCases": [
+      {
+        "row": 7,
+        "case": "Two matching labels",
+        "expected": "",
+        "actual": "K-100",
+        "check": "FAIL"
+      },
+      {
+        "row": 11,
+        "case": "Key reused on another row",
+        "expected": "",
+        "actual": "K-104",
+        "check": "FAIL"
+      }
+    ]
+  },
+  "definitionChecker": {
+    "example": {
+      "exit": 0,
+      "lines": [
+        "PASS: 1 names, 1 direct LAMBDAs, 0 matching aliases, 0 visible controls, 0 without comments.",
+        "Workbook SHA-256: a7a4fef2ea4d235ad9c1240db6ee37db9d36fa6b3dac95ab7870701ee4ed23b7"
+      ]
+    },
+    "dataOnlyCopy": {
+      "exit": 0,
+      "lines": [
+        "Workbook bytes differ from the recorded source. Comparing defined names.",
+        "PASS: 1 names, 1 direct LAMBDAs, 0 matching aliases, 0 visible controls, 0 without comments.",
+        "Workbook SHA-256: 8774fcff5be164743e92e42f7884766a441d66ab10ba2ba3a32522faf4d46b6c"
+      ]
+    },
+    "firstMatchCopy": {
+      "exit": 1,
+      "lines": [
+        "Workbook bytes differ from the recorded source. Comparing defined names.",
+        "CHANGED [workbook]!Asset.ResolveKey: formula"
+      ]
+    }
+  },
+  "textFormulaInNewWorkbook": {
+    "name": "Asset.ResolveKey",
+    "uniqueLabelResult": "U-1",
+    "duplicateLabelResult": "",
+    "duplicateReturnsEmptyText": true
+  }
+}
