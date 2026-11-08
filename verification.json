@@ -1,14 +1,14 @@
 {
   "example": "example.xlsx",
-  "sha256": "a7a4fef2ea4d235ad9c1240db6ee37db9d36fa6b3dac95ab7870701ee4ed23b7",
+  "sha256": "1786f00f528ed26c0d92d2a23dfa2bcb930a7ae57a6030840fda4578c5dbdce1",
   "excelForWindowsBuild": "16.0.20701.20002",
-  "verifiedUtc": "2026-11-08T01:49:42Z",
+  "verifiedUtc": "2026-11-08T02:28:08Z",
   "reopenedCases": [
     {
       "row": 6,
-      "case": "Unique label and key",
-      "expected": "K-102",
-      "actual": "K-102",
+      "case": "Unique label and ID",
+      "expected": "ID-101",
+      "actual": "ID-101",
       "check": "PASS"
     },
     {
@@ -34,14 +34,14 @@
     },
     {
       "row": 10,
-      "case": "Record missing its key",
+      "case": "Record missing its ID",
       "expected": "",
       "actual": "",
       "check": "PASS"
     },
     {
       "row": 11,
-      "case": "Key reused on another row",
+      "case": "ID reused on another row",
       "expected": "",
       "actual": "",
       "check": "PASS"
@@ -49,48 +49,48 @@
     {
       "row": 12,
       "case": "Literal asterisk",
-      "expected": "K-107",
-      "actual": "K-107",
+      "expected": "ID-107",
+      "actual": "ID-107",
       "check": "PASS"
     },
     {
       "row": 13,
       "case": "Different capitalization",
-      "expected": "K-102",
-      "actual": "K-102",
+      "expected": "ID-101",
+      "actual": "ID-101",
       "check": "PASS"
     }
   ],
   "dataChangeInSeparateCopy": {
-    "cell": "Register!B8",
-    "old": "Pump North",
-    "new": "Pump South",
+    "cell": "Records!B8",
+    "old": "Beta",
+    "new": "Theta",
     "failedCases": [
       {
         "row": 7,
         "case": "Two matching labels",
         "expected": "",
-        "actual": "K-100",
+        "actual": "ID-102",
         "check": "FAIL"
       }
     ]
   },
   "formulaChangeInSeparateCopy": {
-    "name": "Asset.ResolveKey",
-    "substitutedFormula": "=LAMBDA(choice,labels,keys,IF(choice=\"\",\"\",XLOOKUP(choice,labels,keys&\"\",\"\",0)))",
+    "name": "Lookup.ResolveID",
+    "substitutedFormula": "=LAMBDA(choice,labels,ids,IF(choice=\"\",\"\",XLOOKUP(choice,labels,ids&\"\",\"\",0)))",
     "failedCases": [
       {
         "row": 7,
         "case": "Two matching labels",
         "expected": "",
-        "actual": "K-100",
+        "actual": "ID-102",
         "check": "FAIL"
       },
       {
         "row": 11,
-        "case": "Key reused on another row",
+        "case": "ID reused on another row",
         "expected": "",
-        "actual": "K-104",
+        "actual": "ID-104",
         "check": "FAIL"
       }
     ]
@@ -100,7 +100,7 @@
       "exit": 0,
       "lines": [
         "PASS: 1 names, 1 direct LAMBDAs, 0 matching aliases, 0 visible controls, 0 without comments.",
-        "Workbook SHA-256: a7a4fef2ea4d235ad9c1240db6ee37db9d36fa6b3dac95ab7870701ee4ed23b7"
+        "Workbook SHA-256: 1786f00f528ed26c0d92d2a23dfa2bcb930a7ae57a6030840fda4578c5dbdce1"
       ]
     },
     "dataOnlyCopy": {
@@ -108,19 +108,19 @@
       "lines": [
         "Workbook bytes differ from the recorded source. Comparing defined names.",
         "PASS: 1 names, 1 direct LAMBDAs, 0 matching aliases, 0 visible controls, 0 without comments.",
-        "Workbook SHA-256: 8774fcff5be164743e92e42f7884766a441d66ab10ba2ba3a32522faf4d46b6c"
+        "Workbook SHA-256: 1e7b6a12a2d5a2a7eb92a10e2984aa8d6fc338c0ac7424f137c940e9691ebd8d"
       ]
     },
     "firstMatchCopy": {
       "exit": 1,
       "lines": [
         "Workbook bytes differ from the recorded source. Comparing defined names.",
-        "CHANGED [workbook]!Asset.ResolveKey: formula"
+        "CHANGED [workbook]!Lookup.ResolveID: formula"
       ]
     }
   },
   "textFormulaInNewWorkbook": {
-    "name": "Asset.ResolveKey",
+    "name": "Lookup.ResolveID",
     "uniqueLabelResult": "U-1",
     "duplicateLabelResult": "",
     "duplicateReturnsEmptyText": true

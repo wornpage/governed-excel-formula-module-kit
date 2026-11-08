@@ -1,9 +1,0 @@
-[
-  {
-    "name": "Asset.ResolveKey",
-    "scope": null,
-    "formula": "_xlfn.LAMBDA(_xlpm.choice,_xlpm.labels,_xlpm.keys,IF(_xlpm.choice=\"\",\"\",_xlfn.LET(_xlpm.firstPos,_xlfn.IFNA(_xlfn.XMATCH(_xlpm.choice,_xlpm.labels,0),0),IF(_xlpm.firstPos=0,\"\",IF(_xlpm.firstPos<>_xlfn.XMATCH(_xlpm.choice,_xlpm.labels,0,-1),\"\",_xlfn.LET(_xlpm.found,INDEX(_xlpm.keys,_xlpm.firstPos)&\"\",IF(_xlpm.found=\"\",\"\",IF(_xlfn.XMATCH(_xlpm.found,_xlpm.keys,0)=_xlfn.XMATCH(_xlpm.found,_xlpm.keys,0,-1),_xlpm.found,\"\"))))))))",
-    "comment": "Return one text key when the label occurs once and its nonblank key occurs once. Arguments are one label and two aligned columns of text.",
-    "hidden": false
-  }
-]

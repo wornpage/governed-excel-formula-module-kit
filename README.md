@@ -1,16 +1,16 @@
 # Solving governed Excel formula modules
 
-Start with a business rule someone else can test. Keep a readable copy of the named formulas and an Excel case that would fail if the rule were broken. This kit includes a fictional asset lookup you can open, change and check.
+Start with a rule someone else can test. This kit shows how to version a named Excel formula and check its behavior using a table with two fields, a label and a record ID. Try it with the supplied data, then apply the same method to a workbook of your own.
 
 [Download the complete kit (ZIP)](https://github.com/wornpage/governed-excel-formula-module-kit/archive/refs/heads/main.zip)
 
 ## Try it in Excel
 
-1. Open [example.xlsx](example.xlsx) in Excel with LAMBDA support. On **Cases**, all eight checks should say **PASS**. Two register records use the label **Pump North**. The expected key for that selection is empty because either key would identify just one of those records.
-2. On a copy, change **Register!B8** from **Pump North** to **Pump South**. Recalculate. **Cases!E7** should now return **K-100**, and **F7** should say **FAIL**. The expected result still describes the original register. Undo the edit and the check should return to **PASS**.
-3. On Windows, open **Formulas → Name Manager** and inspect `Asset.ResolveKey`. The name is scoped to the workbook. Its comment explains the inputs and return value. [Microsoft’s LAMBDA instructions](https://support.microsoft.com/en-us/excel/functions/lambda-function)
+1. Open [example.xlsx](example.xlsx) in Excel with LAMBDA support. The **Cases** sheet should show eight **PASS** results. Two rows on **Records** have the label **Beta**, one with ID-102 and the other with ID-103. The expected result is empty because the label alone cannot identify a single row.
+2. On a copy, change **Records!B8** from **Beta** to **Theta**. Recalculate. **Cases!E7** should return **ID-102**, and **F7** should say **FAIL** because the expected result describes the original two matches. Undo the edit and the check should return to **PASS**.
+3. On Windows, open **Formulas → Name Manager** and inspect `Lookup.ResolveID`. The name is scoped to the workbook. Its comment explains the inputs and return value. [Microsoft’s LAMBDA instructions](https://support.microsoft.com/en-us/excel/functions/lambda-function)
 
-The function takes a selected label and two aligned, one-column ranges of labels and text keys. It returns a single text key only when both the label and its nonblank key occur once. Otherwise it returns empty text. Matching ignores capitalization and treats an asterisk as a literal character. The function looks for the first and last exact match. Different positions mean the value occurs more than once. [Microsoft’s XMATCH reference](https://support.microsoft.com/en-us/excel/functions/xmatch-function)
+The function takes a selected label and two aligned, one-column ranges of labels and text IDs. It returns one ID when the label occurs once and its nonblank ID also occurs once. Otherwise it returns empty text. Matching ignores capitalization and treats an asterisk as a literal character. The function checks the first and last exact match. Different positions mean the value occurs more than once. [Microsoft’s XMATCH reference](https://support.microsoft.com/en-us/excel/functions/xmatch-function)
 
 ## Apply the method to your workbook
 
@@ -22,7 +22,7 @@ The function takes a selected label and two aligned, one-column ranges of labels
 | 4. Fix the owning name | Follow the failing worksheet cell to the named formula and its dependencies. Change the name that owns the rule. Review affected names, aliases, worksheet formulas, validation rules and other consumers. |
 | 5. Verify and hand off | Compare the candidate against the baseline. In the target Excel version, recalculate, save and reopen a working copy. Re-run the failing case and affected callers. Record expected and actual results, Excel build, workbook fingerprint and the reviewer’s decision. Preserve the prior workbook and snapshot for rollback. |
 
-For an intentional policy change, write the new expectation and its reason alongside the old one. For example, the share of assets with an open action divides distinct in-scope assets with at least one open action by all distinct in-scope assets. One asset with three open actions contributes one to the numerator. Record any change to the eligible population.
+When a rule changes intentionally, record the old and new expectations. For example, the case pass rate uses all eight cases as its denominator. Removing a failing case changes that denominator. Keep the case visible and document any change to the set.
 
 ## Export and check
 
@@ -55,14 +55,14 @@ The snapshot contains each user-defined name, its workbook or worksheet scope, i
 | Change in a separate example copy | Saved-definition checker | Recalculated Excel cases |
 | --- | --- | --- |
 | Delivered example | Matches the supplied snapshot | 8 of 8 pass |
-| Rename the second Pump North to Pump South | Definitions still match | 7 of 8 pass. Pump North now resolves to K-100. |
-| Replace the function with a first-match lookup | Reports a change to `Asset.ResolveKey` | 6 of 8 pass. The ambiguous label and the reused key both return an identifier. |
+| Change the second Beta to Theta | Definitions still match | 7 of 8 pass. Beta now resolves to ID-102. |
+| Replace the function with a first-match lookup | Reports a change to `Lookup.ResolveID` | 6 of 8 pass. The ambiguous label and the reused ID both return an identifier. |
 
 The first-match formula is a deliberate faulty replacement that demonstrates the tests catch the defect. The saved results and exact Excel build are in `verification.json`. To exercise the checker independently of Excel, run `python -B -m unittest test_formula_modules`.
 
 ## Share the solution
 
-Send the reviewed workbook when recipients need formulas they can run. To install the example in a different workbook, create the workbook-scoped name `Asset.ResolveKey` and paste the contents of [Asset.ResolveKey.txt](Asset.ResolveKey.txt) into Name Manager’s **Refers to** field. Pass in the destination’s label and key columns. For other modules, also bring across their required names and data columns, then run the cases in that workbook. The JSON snapshot preserves Excel’s stored syntax for review.
+Send the reviewed workbook when recipients need formulas they can run. To install the example in a different workbook, create the workbook-scoped name `Lookup.ResolveID` and paste the contents of [Lookup.ResolveID.txt](Lookup.ResolveID.txt) into Name Manager’s **Refers to** field. Pass in the destination’s label and ID columns. For other modules, also bring across their required names and data columns, then run the cases in that workbook. The JSON snapshot preserves Excel’s stored syntax for review.
 
 Use this brief for the next change.
 

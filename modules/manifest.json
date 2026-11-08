@@ -2,7 +2,7 @@
   "schema": 2,
   "source": {
     "file": "example.xlsx",
-    "sha256": "a7a4fef2ea4d235ad9c1240db6ee37db9d36fa6b3dac95ab7870701ee4ed23b7"
+    "sha256": "1786f00f528ed26c0d92d2a23dfa2bcb930a7ae57a6030840fda4578c5dbdce1"
   },
   "counts": {
     "defined_names": 1,
@@ -12,6 +12,6 @@
     "without_comment": 0
   },
   "modules": {
-    "module-asset.json": "c3e1f63071e5858309f681e0a5438e30655d1e9cdd1b1b30746fd13d07895505"
+    "module-lookup.json": "6a38db6b928d713a7f01517f3a6ec4771b1fc53a43a6ffd7f5c71a4a5ee92a2a"
   }
 }

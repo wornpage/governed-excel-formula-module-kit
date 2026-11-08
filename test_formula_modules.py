@@ -16,7 +16,7 @@ ALIAS = {"comment":"Governed formula compatibility alias: kind"}
 ROWS = [
     ("kind.Core", LAMBDA, {}), ("Core", LAMBDA, ALIAS),
     ("Controls.Mode", '"All"', {}),
-    ("Mode", "'Planning Review'!$C$2", {"comment":"Governed formula visible control: Planning Review!C2"}),
+    ("Mode", "'Data'!$C$2", {"comment":"Governed formula visible control: Data!C2"}),
     ("get.First.Second", "1", {"hidden":"1"}),
     ("_xlnm.Print_Area", "Sheet!$A$1", {"localSheetId":"0"}),
 ]

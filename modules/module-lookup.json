@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Lookup.ResolveID",
+    "scope": null,
+    "formula": "_xlfn.LAMBDA(_xlpm.choice,_xlpm.labels,_xlpm.ids,IF(_xlpm.choice=\"\",\"\",_xlfn.LET(_xlpm.firstPos,_xlfn.IFNA(_xlfn.XMATCH(_xlpm.choice,_xlpm.labels,0),0),IF(_xlpm.firstPos=0,\"\",IF(_xlpm.firstPos<>_xlfn.XMATCH(_xlpm.choice,_xlpm.labels,0,-1),\"\",_xlfn.LET(_xlpm.found,INDEX(_xlpm.ids,_xlpm.firstPos)&\"\",IF(_xlpm.found=\"\",\"\",IF(_xlfn.XMATCH(_xlpm.found,_xlpm.ids,0)=_xlfn.XMATCH(_xlpm.found,_xlpm.ids,0,-1),_xlpm.found,\"\"))))))))",
+    "comment": "Return a text ID only when the label occurs once and the nonblank ID occurs once. Arguments are one label and two aligned columns of text.",
+    "hidden": false
+  }
+]
