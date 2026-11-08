@@ -1,0 +1,55 @@
+{
+  "scope": "Proposed design. All tenant identities, SharePoint version IDs, approval IDs, responses and times are fictional. SHA-256 values and Excel evidence come from the public kit. Field names describe the example and are not a connector payload.",
+  "workbookReview": {
+    "requestId": "R-017",
+    "approvalId": "a1100000-0000-4000-8000-000000000017",
+    "assignedReviewerObjectId": "b1100000-0000-4000-8000-000000000001",
+    "sharePointVersion": {
+      "driveId": "reviews-drive",
+      "itemId": "workbook-41",
+      "versionId": "2.0"
+    },
+    "reviewedSha256": "b8dc0a845e7f959a7178317087600521553eacf343a5e0e54b7f31e3b2dc3778",
+    "evidence": {
+      "gitRevision": "8a69a6cbd4dee4ff57e375c9932252c66e79b05a",
+      "file": "approval/decisions.json",
+      "version": "B-data"
+    }
+  },
+  "nativeApproval": {
+    "id": "a1100000-0000-4000-8000-000000000017",
+    "assignedReviewerObjectId": "b1100000-0000-4000-8000-000000000001"
+  },
+  "nativeResponse": {
+    "approvalId": "a1100000-0000-4000-8000-000000000017",
+    "responderObjectId": "b1100000-0000-4000-8000-000000000001",
+    "outcome": "Approve",
+    "respondedAtUtc": "2026-11-08T12:15:00Z"
+  },
+  "publicationChecks": [
+    {
+      "label": "Reviewed B",
+      "workbook": "B-data.xlsx",
+      "currentSubmission": {
+        "driveId": "reviews-drive",
+        "itemId": "workbook-41",
+        "versionId": "2.0"
+      },
+      "observedSha256": "b8dc0a845e7f959a7178317087600521553eacf343a5e0e54b7f31e3b2dc3778",
+      "expectedResult": "RELEASED",
+      "expectedCurrent": "B"
+    },
+    {
+      "label": "C replaces B on the same item",
+      "workbook": "C-replacement.xlsx",
+      "currentSubmission": {
+        "driveId": "reviews-drive",
+        "itemId": "workbook-41",
+        "versionId": "3.0"
+      },
+      "observedSha256": "b86374023e9b976386171898fafd4130e2708e870a244967e5da324650cd5776",
+      "expectedResult": "STALE",
+      "expectedCurrent": "A"
+    }
+  ]
+}

@@ -30,4 +30,6 @@ python -B release/demo.py
 
 The program creates a temporary inbox and a released folder. It reads the Excel results saved in the supplied fixtures, uses the original approved expectations and checks the actual bytes of Current.xlsx after each decision. It prints **RELEASED → B**, **STALE → A**, **HOLD → A**, then **REJECT → A**. Each scenario starts again at A.
 
-For a team rollout, give the release owner write access to the released location and readers read access. Retain the prior version. Log the request, reviewer, decision time, reviewed fingerprint, fingerprint observed at publication and which release is current. The local example models the two roles in one process. A team could route the decision with Power Automate and enforce the permissions in its chosen storage service.
+For a team rollout, give the release owner write access to the released location and readers read access. Retain the prior version. Log the request, reviewer, decision time, reviewed fingerprint, fingerprint observed at publication and which release is current. The local example models the two roles in one process.
+
+The [proposed Power Automate route](power-automate/README.md) follows Riley’s Dataverse approval ID through a custom review row to the SharePoint file version and SHA-256 that Morgan verifies. Request R-017 includes a worked record and a local replay for B and its replacement C.

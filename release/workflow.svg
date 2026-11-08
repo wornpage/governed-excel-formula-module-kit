@@ -1,43 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 674" width="1520" height="674" role="img" aria-labelledby="title desc">
-  <title id="title">From formula review to workbook release</title>
-  <desc id="desc">The approved Git baseline and submitted Excel workbook feed a definition comparison and Excel tests. The reviewer records a decision for one fingerprint. The release owner checks the submitted bytes before publishing B to Current.xlsx. If C replaces B or a changed caller needs a test, A stays current.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 695" width="1520" height="695" role="img" aria-labelledby="title desc">
+  <title id="title">From a SharePoint submission to a verified workbook release</title>
+  <desc id="desc">The team tests one SharePoint drive, item and version against the Git baseline. In the proposed Power Automate route, Riley responds to a Dataverse approval. A custom WorkbookReview row ties its approval ID to the file version, test evidence and SHA-256. Morgan checks the current submission version and the staged bytes before publishing them. A stays current if C replaces B or evidence is missing.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="4" markerHeight="4" orient="auto">
       <path d="M0 0 12 6 0 12Z" fill="#54798a"/>
     </marker>
   </defs>
-  <rect width="1520" height="674" fill="white"/>
+  <rect width="1520" height="695" fill="white"/>
   <g fill="none" stroke="#54798a" stroke-width="5" stroke-linejoin="round" marker-end="url(#arrow)">
-    <path d="M680 73H833"/>
-    <path d="M263 136V199"/>
-    <path d="M1174 136V164H534V199"/>
-    <path d="M1174 136V199"/>
-    <path d="M263 326V389"/>
-    <path d="M1174 326V355H534V389"/>
-    <path d="M680 452H833"/>
-    <path d="M346 516V574"/>
-    <path d="M1174 516V574"/>
+    <path d="M681 72H835"/><path d="M263 132V183"/>
+    <path d="M1175 132V156H529V183"/><path d="M1175 132V183"/>
+    <path d="M263 302V358"/><path d="M1175 302V330H529V358"/>
+    <path d="M681 449H835"/><path d="M345 534V576"/><path d="M1175 534V576"/>
   </g>
   <g stroke="#54798a" stroke-width="4">
-    <rect x="10" y="12" width="670" height="124" rx="14" fill="#ecf4f6"/>
-    <rect x="840" y="12" width="670" height="124" rx="14" fill="#ecf4f6"/>
-    <rect x="10" y="202" width="670" height="124" rx="14" fill="#ecf4f6"/>
-    <rect x="840" y="202" width="670" height="124" rx="14" fill="#ecf4f6"/>
-    <rect x="10" y="392" width="670" height="124" rx="14" fill="#e3efeb"/>
-    <rect x="840" y="392" width="670" height="124" rx="14" fill="#e3efeb"/>
-    <rect x="10" y="578" width="1500" height="84" rx="12" fill="#f8f2e6"/>
+    <rect x="10" y="12" width="670" height="119" rx="14" fill="#ecf4f6"/>
+    <rect x="840" y="12" width="670" height="119" rx="14" fill="#f2eff7" stroke="#766086" stroke-dasharray="13 7"/>
+    <rect x="10" y="185" width="670" height="117" rx="14" fill="#ecf4f6"/>
+    <rect x="840" y="185" width="670" height="117" rx="14" fill="#ecf4f6"/>
+    <rect x="10" y="361" width="670" height="173" rx="14" fill="#f2eff7" stroke="#766086" stroke-dasharray="13 7"/>
+    <rect x="840" y="361" width="670" height="173" rx="14" fill="#e3efeb"/>
+    <rect x="10" y="579" width="1500" height="70" rx="12" fill="#f8f2e6"/>
   </g>
   <g font-family="Segoe UI, Arial, sans-serif" fill="#13384a">
-    <g font-weight="700" font-size="40">
-      <text x="34" y="59">1   Git baseline</text><text x="864" y="59">2   Excel working copy</text>
-      <text x="34" y="249">3   Compare saved names</text><text x="864" y="249">4   Test in Excel</text>
-      <text x="34" y="439">5   Reviewer</text><text x="864" y="439">6   Release owner</text>
+    <g font-weight="700" font-size="38">
+      <text x="34" y="58">1  Git baseline</text><text x="864" y="58">2  SharePoint submission</text>
+      <text x="34" y="232">3  Compare saved names</text><text x="864" y="232">4  Test the workbook in Excel</text>
+      <text x="34" y="409">5  Power Automate approval</text><text x="864" y="409">6  Morgan publishes</text>
     </g>
     <g font-size="32">
-      <text x="34" y="109">Formula and agreed answers</text><text x="864" y="109">Source data and worksheet formulas</text>
-      <text x="34" y="299">Check definitions against Git</text><text x="864" y="299">Check results and changed callers</text>
-      <text x="34" y="489">Record decision for one fingerprint</text><text x="864" y="489">Match the hash and publish B</text>
+      <text x="34" y="106">Formula and agreed answers</text><text x="864" y="106">Capture drive, item and version ID</text>
+      <text x="34" y="279">Check definitions against Git</text><text x="864" y="279">Record results and SHA-256</text>
+      <text x="34" y="457">Dataverse records Riley’s response</text><text x="34" y="503">WorkbookReview: ID → version + SHA-256</text>
+      <text x="864" y="457">Match current version and SHA-256</text><text x="864" y="503">Publish staged bytes to Current.xlsx</text>
     </g>
-    <text x="34" y="632" font-size="34"><tspan font-weight="700">Keep A current</tspan><tspan dx="23">if C replaces B or a changed caller still needs a test.</tspan></text>
+    <text x="34" y="626" font-size="32"><tspan font-weight="700">Keep A current</tspan><tspan dx="17">if C replaces B, the hashes differ or a changed caller lacks a test.</tspan></text>
+    <text x="14" y="683" font-size="27" fill="#5e5069">Dashed boxes show the proposed SharePoint and Power Automate integration.</text>
   </g>
 </svg>

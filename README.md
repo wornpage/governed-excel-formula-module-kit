@@ -70,6 +70,8 @@ The example includes downloadable workbooks, exact fingerprints, an independent 
 
 Follow [the release owner’s three decisions](release/README.md). The owner makes B current after matching its fingerprint to the review. A stays current if C replaces B at the submission link or a mixed edit introduces a worksheet formula that still needs a test. Run `python -B release/demo.py` to try all three with the supplied workbooks.
 
+The [proposed Power Automate flow](release/power-automate/README.md) shows how Riley’s approval in Dataverse identifies one SharePoint file version and SHA-256 fingerprint. Follow request **R-017** to see what Morgan checks before publishing. Run `python -B release/power-automate/verify_binding.py` to replay the example locally.
+
 ## Share the solution
 
 Send the reviewed workbook when recipients need formulas they can run. To install the example in a different workbook, create the workbook-scoped name `Lookup.ResolveID` and paste the contents of [Lookup.ResolveID.txt](Lookup.ResolveID.txt) into Name Manager’s **Refers to** field. Pass in the destination’s label and ID columns. For other modules, also bring across their required names and data columns, then run the cases in that workbook. The JSON snapshot preserves Excel’s stored syntax for review.
