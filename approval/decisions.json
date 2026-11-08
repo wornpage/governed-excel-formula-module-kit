@@ -1,0 +1,156 @@
+{
+  "scope": "Illustrative review decisions for these exact workbook bytes. No person, Microsoft service or automated flow granted approval.",
+  "versionABaseline": {
+    "gitRevision": "535ba49f28f0c3087e0634e444d10d226782fb85",
+    "expectedResults": "verification.json#reopenedCases[].expected",
+    "fixtureTextSha256_LF": "b92bb98455fb0e944a0f979c9a0490414e5a4b223154b36692fccf7b73e8796d",
+    "definitionSnapshot": "modules/manifest.json"
+  },
+  "excelForWindowsBuild": "16.0.20701.20002",
+  "recalculatedAndReopenedUtc": "2026-11-08T03:16:21Z",
+  "method": "Each B starts from A. Worksheet scores use the eight unchanged case identities. Returned values and entered expectations are separately compared to the version A expectations. The two rename probes use a read-only working copy and are not part of the eight.",
+  "versions": {
+    "A": {
+      "workbook": "example.xlsx",
+      "decision": "Accept A (baseline)",
+      "reviewRole": "Rule owner and workbook reviewer",
+      "reason": "Reviewed rule: return a text ID only for one matching label with one nonblank, unique ID. Preserve these expectations outside the workbook.",
+      "evidence": {
+        "sha256": "1786f00f528ed26c0d92d2a23dfa2bcb930a7ae57a6030840fda4578c5dbdce1",
+        "definitionChanges": [],
+        "editedWorksheetCells": [],
+        "caseCount": 8,
+        "sheetFailedRows": [],
+        "returnedValueMismatches": [],
+        "expectedCellMismatches": []
+      },
+      "additionalExcelProbes": [
+        {
+          "selectedLabel": "Label A",
+          "expected": "ID-108",
+          "returned": "ID-108"
+        },
+        {
+          "selectedLabel": "Label B",
+          "expected": "",
+          "returned": ""
+        }
+      ]
+    },
+    "B-data": {
+      "workbook": "approval/B-data.xlsx",
+      "decision": "Accept this B",
+      "reviewRole": "Data owner and workbook reviewer",
+      "reason": "Only the label for ID-108 changed. The named formula and expected answers match A. All eight cases and both rename probes match their stated outcomes; issue a new workbook decision for this fingerprint.",
+      "evidence": {
+        "sha256": "b8dc0a845e7f959a7178317087600521553eacf343a5e0e54b7f31e3b2dc3778",
+        "definitionChanges": [],
+        "editedWorksheetCells": [
+          "Records!B13"
+        ],
+        "caseCount": 8,
+        "sheetFailedRows": [],
+        "returnedValueMismatches": [],
+        "expectedCellMismatches": []
+      },
+      "additionalExcelProbes": [
+        {
+          "selectedLabel": "Label A",
+          "expected": "",
+          "returned": ""
+        },
+        {
+          "selectedLabel": "Label B",
+          "expected": "ID-108",
+          "returned": "ID-108"
+        }
+      ]
+    },
+    "B-formula": {
+      "workbook": "approval/B-formula.xlsx",
+      "decision": "Reject",
+      "reviewRole": "Formula maintainer and rule owner",
+      "reason": "The first-match replacement returns ID-102 for the ambiguous label Beta and ID-104 for a reused ID; the rule requires empty text in both cases.",
+      "evidence": {
+        "sha256": "c24183a610c505273540346d3682ad790376023835ae6ab3dd344203bb2221ce",
+        "definitionChanges": [
+          "CHANGED [workbook]!Lookup.ResolveID: formula"
+        ],
+        "editedWorksheetCells": [],
+        "caseCount": 8,
+        "sheetFailedRows": [
+          7,
+          11
+        ],
+        "returnedValueMismatches": [
+          {
+            "row": 7,
+            "approved": "",
+            "returned": "ID-102"
+          },
+          {
+            "row": 11,
+            "approved": "",
+            "returned": "ID-104"
+          }
+        ],
+        "expectedCellMismatches": []
+      }
+    },
+    "B-expected": {
+      "workbook": "approval/B-expected.xlsx",
+      "decision": "Hold for rule owner",
+      "reviewRole": "Rule owner",
+      "reason": "Only the expected value for Beta changed. The formula still meets the agreed rule. Restore the expectation, or separately approve a new rule and fixture before testing a new candidate.",
+      "evidence": {
+        "sha256": "2f4f202fdd5682b196962a006e1aaef71a98691971fec683ca206a5be7fb445e",
+        "definitionChanges": [],
+        "editedWorksheetCells": [
+          "Cases!D7"
+        ],
+        "caseCount": 8,
+        "sheetFailedRows": [
+          7
+        ],
+        "returnedValueMismatches": [],
+        "expectedCellMismatches": [
+          {
+            "row": 7,
+            "approved": "",
+            "entered": "ID-102"
+          }
+        ]
+      }
+    },
+    "B-combined": {
+      "workbook": "approval/B-combined.xlsx",
+      "decision": "Reject",
+      "reviewRole": "Workbook reviewer and rule owner",
+      "reason": "The worksheet caller bypasses the governed name and its expected answer changed to the same wrong ID. The sheet displays eight passes, but row 7 fails against A.",
+      "evidence": {
+        "sha256": "998f07e411b958e6f2432044cce8b4b3bc21025af76bf09c396ceeede7227136",
+        "definitionChanges": [],
+        "editedWorksheetCells": [
+          "Cases!D7",
+          "Cases!E7"
+        ],
+        "caseCount": 8,
+        "sheetFailedRows": [],
+        "returnedValueMismatches": [
+          {
+            "row": 7,
+            "approved": "",
+            "returned": "ID-102"
+          }
+        ],
+        "expectedCellMismatches": [
+          {
+            "row": 7,
+            "approved": "",
+            "entered": "ID-102"
+          }
+        ]
+      }
+    }
+  }
+}

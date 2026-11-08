@@ -60,6 +60,12 @@ The snapshot contains each user-defined name, its workbook or worksheet scope, i
 
 The first-match formula is a deliberate faulty replacement that demonstrates the tests catch the defect. The saved results and exact Excel build are in `verification.json`. To exercise the checker independently of Excel, run `python -B -m unittest test_formula_modules`.
 
+## Compare version A with version B
+
+Open the [worked approval example](approval/README.md) to compare the original workbook with four separate copies. A data-only rename earns a new decision after two focused checks. A faulty formula is rejected. Editing only the expected answer puts the workbook on hold for the rule owner. Editing both the caller and its expected answer makes the sheet show eight passes even though it returns the wrong ID for Beta.
+
+The example includes downloadable workbooks, exact fingerprints, an independent set of eight agreed answers and a one-command replay. Each decision belongs to the bytes the reviewer examined.
+
 ## Share the solution
 
 Send the reviewed workbook when recipients need formulas they can run. To install the example in a different workbook, create the workbook-scoped name `Lookup.ResolveID` and paste the contents of [Lookup.ResolveID.txt](Lookup.ResolveID.txt) into Name Manager’s **Refers to** field. Pass in the destination’s label and ID columns. For other modules, also bring across their required names and data columns, then run the cases in that workbook. The JSON snapshot preserves Excel’s stored syntax for review.
