@@ -1,0 +1,52 @@
+{
+  "sourceApprovalRevision": "8a69a6cbd4dee4ff57e375c9932252c66e79b05a",
+  "excelForWindowsBuild": "16.0.20701.20002",
+  "verifiedUtc": "2026-11-08T03:37:01Z",
+  "method": "Recalculated, saved, reopened and recalculated in Excel for Windows. Each original case is checked against the expected answer recorded at version A. The summary caller has one separately counted check.",
+  "workbooks": {
+    "C-replacement": {
+      "base": "approval/B-data.xlsx",
+      "evidence": {
+        "sha256": "b86374023e9b976386171898fafd4130e2708e870a244967e5da324650cd5776",
+        "definitionChanges": [],
+        "editedWorksheetCells": [
+          "Records!B13"
+        ],
+        "caseCount": 8,
+        "sheetFailedRows": [],
+        "returnedValueMismatches": [],
+        "expectedCellMismatches": []
+      }
+    },
+    "B-mixed": {
+      "base": "approval/B-data.xlsx",
+      "evidence": {
+        "sha256": "683a5a2544d637ab96466e9dbbfbf1d01a44450ccdbebe18086fb5eaeacfa0e9",
+        "definitionChanges": [],
+        "editedWorksheetCells": [
+          "Records!B13",
+          "Summary!B2",
+          "Summary!B3",
+          "Summary!B5",
+          "Summary!B6",
+          "Summary!B8",
+          "Summary!C5",
+          "Summary!C6"
+        ],
+        "caseCount": 8,
+        "sheetFailedRows": [],
+        "returnedValueMismatches": [],
+        "expectedCellMismatches": []
+      },
+      "additionalCallerCheck": {
+        "cell": "Summary!C6",
+        "selectedLabel": "Beta",
+        "expectationSource": "verification.json, reopenedCases row 7",
+        "expected": "",
+        "returned": "ID-102",
+        "formulaInExcel": "=XLOOKUP(B6,RecordList[Display label],RecordList[Record ID],\"\",0)",
+        "passed": false
+      }
+    }
+  }
+}

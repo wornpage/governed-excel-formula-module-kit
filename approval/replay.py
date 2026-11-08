@@ -27,8 +27,8 @@ def trusted_cases():
     return rows
 
 
-def cells(path):
-    """Read entered values, saved formulas and cached results for the two example sheets."""
+def cells(path, expected_sheets=("Cases", "Records")):
+    """Read entered values, saved formulas and cached results for the specified example sheets."""
     with ZipFile(path) as z:
         strings = ["".join(t.text or "" for t in si.findall(".//{*}t"))
                    for si in ET.fromstring(z.read("xl/sharedStrings.xml"))]
@@ -52,7 +52,7 @@ def cells(path):
                 formula = None if f is None else (f.text or "", tuple(sorted(f.attrib.items())))
                 data[c.attrib["r"]] = (typ, value, formula)
             sheets[sheet.attrib["name"]] = data
-    if set(sheets) != {"Cases", "Records"}:
+    if set(sheets) != set(expected_sheets):
         raise ValueError("Unexpected worksheets.")
     return sheets
 
@@ -62,12 +62,13 @@ def authored(cell):
     return None if cell is None else ("formula", cell[2]) if cell[2] is not None else cell[:2]
 
 
-def evidence(path, fixture, baseline, a_cells):
+def evidence(path, fixture, baseline, a_cells, expected_sheets=("Cases", "Records")):
     names, source = read_workbook(path)
-    data = cells(path)
+    data = cells(path, expected_sheets)
+    original = {sheet: a_cells.get(sheet, {}) for sheet in data}
     edits = sorted(f"{sheet}!{ref}" for sheet, vals in data.items()
-                   for ref in vals.keys() | a_cells[sheet].keys()
-                   if authored(vals.get(ref)) != authored(a_cells[sheet].get(ref)))
+                   for ref in vals.keys() | original[sheet].keys()
+                   if authored(vals.get(ref)) != authored(original[sheet].get(ref)))
     sheet_fail, result_fail, expected_edit = [], [], []
     for case in fixture:
         n, expected = case["row"], case["expected"]

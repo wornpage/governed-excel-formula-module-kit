@@ -33,3 +33,5 @@ python -B approval/replay.py
 The replay checks the five fingerprints, compares saved names and worksheet edits, and reads the results Excel saved. It succeeds when it reproduces the table, **including the rejected examples**. It does not recalculate Excel, issue approvals, or assess other workbooks. For a new candidate, recalculate in the target Excel build, save and reopen a working copy, and record a new decision. Keep the approved workbook, Git revision, formula snapshot and expected answers independently of the candidate.
 
 To run the general definition check alone, try `python formula_modules.py check approval/B-formula.xlsx` (changed name, exit 1) and `python formula_modules.py check approval/B-expected.xlsx` (matching name, exit 0). Neither exit code is a workbook approval. You can carry out this review locally without Dataverse or Power Automate.
+
+Next, follow the [release owner as they publish B, detect a replacement C and hold a mixed edit](../release/README.md).

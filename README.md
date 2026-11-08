@@ -66,6 +66,10 @@ Open the [worked approval example](approval/README.md) to compare the original w
 
 The example includes downloadable workbooks, exact fingerprints, an independent set of eight agreed answers and a one-command replay. Each decision belongs to the bytes the reviewer examined.
 
+## From review to release
+
+Follow [the release owner’s three decisions](release/README.md). The owner makes B current after matching its fingerprint to the review. A stays current if C replaces B at the submission link or a mixed edit introduces a worksheet formula that still needs a test. Run `python -B release/demo.py` to try all three with the supplied workbooks.
+
 ## Share the solution
 
 Send the reviewed workbook when recipients need formulas they can run. To install the example in a different workbook, create the workbook-scoped name `Lookup.ResolveID` and paste the contents of [Lookup.ResolveID.txt](Lookup.ResolveID.txt) into Name Manager’s **Refers to** field. Pass in the destination’s label and ID columns. For other modules, also bring across their required names and data columns, then run the cases in that workbook. The JSON snapshot preserves Excel’s stored syntax for review.
